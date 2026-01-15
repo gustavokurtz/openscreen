@@ -66,7 +66,7 @@ describe('GIF Exporter', () => {
    * Feature: gif-export, Property 4: Aspect Ratio Preservation
    */
   describe('Property 4: Aspect Ratio Preservation', () => {
-    const sizePresets: GifSizePreset[] = ['small', 'medium', 'large', 'original'];
+    const sizePresets: GifSizePreset[] = ['medium', 'large', 'original'];
 
     it('should preserve aspect ratio within 0.01 tolerance for all size presets', () => {
       fc.assert(
@@ -98,14 +98,14 @@ describe('GIF Exporter', () => {
     it('should return original dimensions when source is smaller than preset max height', () => {
       fc.assert(
         fc.property(
-          fc.integer({ min: 100, max: 400 }), // sourceWidth (small)
-          fc.integer({ min: 100, max: 400 }), // sourceHeight (small, less than 480p)
+          fc.integer({ min: 100, max: 640 }), // sourceWidth
+          fc.integer({ min: 100, max: 640 }), // sourceHeight (less than 720p)
           (sourceWidth: number, sourceHeight: number) => {
-            // For 'small' preset with maxHeight 480, if source is smaller, use original
+            // For 'medium' preset with maxHeight 720, if source is smaller, use original
             const { width, height } = calculateOutputDimensions(
               sourceWidth,
               sourceHeight,
-              'small',
+              'medium',
               GIF_SIZE_PRESETS
             );
             

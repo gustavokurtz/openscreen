@@ -138,7 +138,7 @@ export function registerIpcHandlers(
         ? [{ name: 'GIF Image', extensions: ['gif'] }]
         : [{ name: 'MP4 Video', extensions: ['mp4'] }];
 
-      const result = await dialog.showSaveDialog(mainWindow || undefined, {
+      const result = await dialog.showSaveDialog(mainWindow!, {
         title: isGif ? 'Save Exported GIF' : 'Save Exported Video',
         defaultPath: path.join(app.getPath('downloads'), fileName),
         filters,

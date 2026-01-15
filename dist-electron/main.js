@@ -229,7 +229,7 @@ function registerIpcHandlers(createEditorWindow2, createSourceSelectorWindow2, g
       const mainWindow2 = getMainWindow();
       const isGif = fileName.toLowerCase().endsWith(".gif");
       const filters = isGif ? [{ name: "GIF Image", extensions: ["gif"] }] : [{ name: "MP4 Video", extensions: ["mp4"] }];
-      const result = await dialog.showSaveDialog(mainWindow2 || void 0, {
+      const result = await dialog.showSaveDialog(mainWindow2, {
         title: isGif ? "Save Exported GIF" : "Save Exported Video",
         defaultPath: path.join(app.getPath("downloads"), fileName),
         filters,
